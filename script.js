@@ -103,6 +103,7 @@ let sortByAge = (users) => {
 
     users.sort(compareObjByAge);
 }
+/**
 let john = { name: "John", age: 25 };
 let pete = { name: "Pete", age: 30 };
 let mary = { name: "Mary", age: 28 };
@@ -110,4 +111,39 @@ let mary = { name: "Mary", age: 28 };
 let arr = [ pete, john, mary ];
 
 sortByAge(arr);
-console.log(arr);
+console.log(arr);  */
+
+/**
+ * Write the function getAverageAge(users) that gets an array of objects
+ *  with property age and returns the average age.
+The formula for the average is (age1 + age2 + ... + ageN) / N.
+
+For instance:
+
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 29 };
+
+let arr = [ john, pete, mary ];
+
+alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
+ */
+
+let getAverageAge = (users) => {
+
+    let cumulative_age = users.reduce(
+         (acc, curr) => { // acc is set to be a number, curr is the current object in our array
+            return acc + curr.age;
+
+    }, 0);
+    
+    let num_users = users.length;
+
+    return cumulative_age / num_users;
+}
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 29 };
+
+let arr = [ john, pete, mary ];
+console.log( getAverageAge(arr) );
