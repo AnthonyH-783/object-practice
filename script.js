@@ -72,3 +72,42 @@ let mary = { name: "Mary", surname: "Key", id: 3 };
 let users = [ john, pete, mary ];
 let usersMapped = convertToFullNameObjects(users);
 console.log(usersMapped);*/
+
+/**
+ * Write the function sortByAge(users) that gets an array of objects 
+ * with the age property and sorts them by age.
+ *
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+let arr = [ pete, john, mary ];
+
+sortByAge(arr);
+
+// now: [john, mary, pete]
+alert(arr[0].name); // John
+alert(arr[1].name); // Mary
+alert(arr[2].name); // Pete
+ */
+let compareObjByAge = (user_a, user_b) => {
+    if(user_a.age > user_b.age){
+        return 1; // Returning positive 1 when a is greater puts it after b
+    }
+    else{
+        return -1; // When a is less or equal, it is put before b
+    }
+
+}
+let sortByAge = (users) => {
+
+    users.sort(compareObjByAge);
+}
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+let arr = [ pete, john, mary ];
+
+sortByAge(arr);
+console.log(arr);
