@@ -141,9 +141,72 @@ let getAverageAge = (users) => {
 
     return cumulative_age / num_users;
 }
+/**
 let john = { name: "John", age: 25 };
 let pete = { name: "Pete", age: 30 };
 let mary = { name: "Mary", age: 29 };
 
 let arr = [ john, pete, mary ];
-console.log( getAverageAge(arr) );
+console.log( getAverageAge(arr) ); */
+
+/**
+ * Create keyed object from array
+importance: 4
+Let’s say we received an array of users in the form {id:..., name:..., age:... }.
+
+Create a function groupById(arr) that creates an object from it,
+ with id as the key, and array items as values.
+For example:
+
+let users = [
+  {id: 'john', name: "John Smith", age: 20},
+  {id: 'ann', name: "Ann Smith", age: 24},
+  {id: 'pete', name: "Pete Peterson", age: 31},
+];
+
+let usersById = groupById(users);
+
+/*
+// after the call we should have:
+
+usersById = {
+  john: {id: 'john', name: "John Smith", age: 20},
+  ann: {id: 'ann', name: "Ann Smith", age: 24},
+  pete: {id: 'pete', name: "Pete Peterson", age: 31},
+}
+*/
+ 
+let groupById1 = (arr) => {
+    let obj = {};
+    for(let user of arr){
+        if("id" in user){
+            let key = user["id"];
+            obj[key] = {id: key,
+                        name: user["name"],
+                        age: user["age"],
+            }
+        }
+    }
+    return obj;
+}
+let groupById = (arr) => {
+
+    const keyed_obj = arr.reduce((acc, curr) => {
+
+        acc[curr["id"]] = curr; // operation on accumulator: Adding key:value pair
+        return acc; // returning accumulator
+
+     }, {}); // acc starts as {} (defined as an object from the start)
+
+     return keyed_obj;
+
+}
+
+
+let users = [
+  {id: 'john', name: "John Smith", age: 20},
+  {id: 'ann', name: "Ann Smith", age: 24},
+  {id: 'pete', name: "Pete Peterson", age: 31},
+];
+let usersById = groupById(users);
+console.log(usersById);
